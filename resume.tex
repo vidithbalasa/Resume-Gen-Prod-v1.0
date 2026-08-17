@@ -6,15 +6,30 @@
 \documentclass{resume} % Use the custom resume.cls style
 
 \usepackage[left=0.4 in,top=0.4in,right=0.4 in,bottom=0.4in]{geometry} % Document margins
-\newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}} 
+\newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}}
 \newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
+
+% ---- Vertical compression ----
+\linespread{0.97}                 % line leading 13.6pt -> 13.2pt
+\setlength{\parskip}{4pt plus 1pt}% paragraph gap 6.8pt -> 4pt
+\usepackage{enumitem}
+\setlist[itemize]{topsep=2pt, parsep=0pt, itemsep=1pt, leftmargin=1.3em}
+\def\sectionskip{\vspace{5pt}}    % space above a section heading
+\def\sectionlineskip{\vspace{3pt}}% space between heading text and its rule
+\def\nameskip{\vspace{4pt}}       % space under the name
+
+% ---- No hyphenation: wrap whole words to the next line ----
+\hyphenpenalty=10000              % never break a word automatically
+\exhyphenpenalty=10000            % never break at an existing hyphen (image-to-CAD)
+\tolerance=9999                   % allow looser word spacing instead
+\emergencystretch=3em             % last resort, avoids overfull lines
+
 \name{Vidith Balasa}
 
 \address{
     (559) 317-5372 \\
     \href{mailto:vidithbalasa@gmail.com}{vidithbalasa@gmail.com} \\ 
-    \href{https://linkedin.com/in/vidithbalasa}{linkedin.com/in/vidithbalasa} \\
-    \href{https://github.com/vidithbalasa}{github.com/vidithbalasa}
+    \href{https://linkedin.com/in/vidithbalasa}{linkedin.com/in/vidithbalasa}
 }
 \begin{document}
 
@@ -22,11 +37,9 @@
 %	EDUCATION
 %----------------------------------------------------------------------------------------
 \begin{rSection}{Education}
-    {\bf Master of Science in Data Science}, University of San Francisco \hfill {Jul 2023 - Jun 2024}
-    \\Relevant Coursework: Machine Learning, Deep Learning,
-    NLP, Time Series, Distributed Data Systems
+    {\bf MS in Artificial Intelligence}, University of San Francisco \hfill {Jun 2023 - Jun 2024}
 
-    \noindent{\bf Bachelor of Arts in Philosophy}, University of California, Santa Cruz \hfill {Sep 2018 - Jun 2022}
+    \noindent{\bf BA in Philosophy}, University of California, Santa Cruz \hfill {Sep 2018 - Jun 2022}
 \end{rSection}
 
 %----------------------------------------------------------------------------------------
@@ -34,30 +47,37 @@
 %----------------------------------------------------------------------------------------
 \begin{rSection}{EXPERIENCE}
 
-    \textbf{Square} \hfill Oct 2023 - Present\\
-    Machine Learning Engineer -- Intern \hfill \textit{Remote}
+    \textbf{Siemens} \hfill Nov 2024 - Present\\
+    AI Engineer \hfill \textit{Cincinnati, OH}
      \begin{itemize}
-        \itemsep -3pt {} 
-        \item Enhanced revenue-to-ad-cost ratio by over 5\% through the development and training of a sophisticated gradient boosting model on a dataset exceeding 100GB, aimed at predicting customer lifetime value with heightened accuracy
-        \item Enhanced performance of the existing lifetime revenue prediction pipeline by over 20\% through strategic integration of Prefect 2 frameworks, streamlining deployment of ml models into production
-        \item Obtained shareholder approval for production deployment by concisely presenting the model's monetary benefits
+        \item Led development of the embedding pipeline making 400+ TB of ASML engineering data searchable, onboarding over 20,000 users onto Teamcenter AI
+        \item Built a multi-agent system in production that lets users control Teamcenter through natural language, using LangGraph and an MCP server that exposes product operations as tools
+        \item Provisioned and configured AI infrastructure across AWS and Azure using Terraform and Ansible, enabling migration from on-premises to cloud deployment
+        \item Built an automated evaluation pipeline in GitLab CI with Langfuse tracing, translating agent performance into metrics reviewed by non-technical stakeholders
+        \item Extended Teamcenter's core C++ services behind a REST API layer in a large legacy SOA codebase, and shipped React frontend features for AI capabilities in the product
+        \item Researched and shipped an image-to-CAD retrieval pipeline with the Siemens NX team, letting engineers photograph a physical part and retrieve its exact 3D model and part ID by similarity search over hundreds of automated 2D renders per CAD model, reaching 85\% top-k accuracy on a 5,000-part catalog
+     \end{itemize}
+
+    \textbf{Square} \hfill Oct 2023 - Oct 2024\\
+    Machine Learning Engineer -- Intern \hfill \textit{San Francisco, CA}
+     \begin{itemize}
+        \item Built binary classifiers in Python predicting which prospective merchants would convert from Square's direct mail campaigns, training XGBoost, decision trees, and neural networks on hundreds of GBs of data
+        \item Improved on the production model baseline through feature engineering and hyperparameter tuning, raising F1 by 5\% on the deployed test set
+        \item Developed customer lifetime value models for the growth team, building training datasets from Snowflake with SQL and orchestrating training and scoring pipelines in Prefect
      \end{itemize}
      
     \textbf{Siemens} \hfill May 2023 - Jul 2023\\
     Software Engineer -- Intern \hfill \textit{Remote}
      \begin{itemize}
-        \itemsep -3pt {} 
-        \item Deployed a cutting-edge LLM troubleshoot solution, achieving a 15\% reduction in customer complaints by enhancing the accuracy and response speed of our support systems
-        \item Conducted comprehensive research on emerging deep learning and generative AI technologies, contributing to the ongoing integration of cutting edge technologies into the company's product offerings
-        \item Effectively communicated complex project milestones and results to a broad range of high level executives
+        \item Integrated LLM-powered question answering over customer document repositories into Teamcenter, working within the platform's legacy Java codebase
+        \item Built a natural-language-to-SQL pipeline scoped to Teamcenter database schemas, letting non-technical users query engineering data conversationally
      \end{itemize}
     
     \textbf{Divercity} \hfill Jun 2022 - Sep 2022\\
     Software Engineer -- Intern \hfill \textit{Remote}
      \begin{itemize}
-        \itemsep -3pt {} 
-        \item Ensured operational integrity of image recognition models deployed on AWS, maintaining uptime at a rate of 97\% month-over-month
-        \item Spearheaded the interview process and mentoring of two interns from a pool of over five candidates, playing a crucial role in their development and successful integration into key projects
+        \item Built and deployed image classification models on AWS powering a diversity-focused recruiting product that surfaced underrepresented candidates to employer ATS systems
+        \item Developed data pipelines collecting and processing LinkedIn profile data for model training and evaluation
      \end{itemize}
     
     \end{rSection}
@@ -68,24 +88,9 @@
 %----------------------------------------------------------------------------------------
 
 \begin{rSection}{PERSONAL ENDEAVORS}
-\vspace{-1.25em}
-\item \textbf{ScaleAI Hackathon Winner} {One of three top prize winners at the annual Scale AI hackathon. Built an LLM based molecular generation model that increases speed of drug discovery for chemical engineers. Fine tuned embedding models on SMILES notation to generate molecular substructure knowledge from plain text.}
-\item \textbf{4 Bit CUDA Kernel} {Built a set of CUDA kernels that allows for quantized 4 bit tensor operations on an Nvidia GPU. Nvidia doesn't currently have any native kernels that allow for 4 bit computation, so I decided to build my own. \href{https://github.com/vidithbalasa/4-bit-Quantized-CUDA-Kernel}{(GitHub Repository)}}
+\vspace{-0.5em}
+\item \textbf{ScaleAI Hackathon Winner} {One of three top prize winners at the annual Scale AI hackathon. Built an LLM molecular generation model fine-tuned on a SMILES dataset to accelerate drug discovery for chemical engineers.}
 \item \textbf{Fog City Rocketry} {Officer for fog city rocketry club. Built a 3D printed rocket with a custom H-class solid fuel engine that reached 10,000 feet. Worked on IMU and flight computer algorithms.}
 \end{rSection} 
-
-%----------------------------------------------------------------------------------------
-% SKILLS
-%----------------------------------------------------------------------------------------
-\begin{rSection}{SKILLS}
-
-\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
-Languages & Python, C, C++, SQL, Julia, Javascript/Typescript, HTML, CSS\\
-Frameworks & PyTorch, CUDA, TensorFlow, Scikit-learn, Pandas, Numpy, Flask, React\\
-Database Tools & Spark, MySQL, PostgreSQL, MongoDB, Redis, Firebase, BigQuery, Snowflake\\
-Misc & git, vim, nvcc, Docker, Amazon Web Services (AWS), Airflow, Prefect\\
-\end{tabular}\\
-\end{rSection}
-
 
 \end{document}
